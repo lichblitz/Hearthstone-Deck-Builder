@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">HS DeckBuilder</string>
+
+    <string name="action_settings">Settings</string>
+
+    <!-- HERO NAMES -->
+    <string name="hero_1">Warrior</string>
+    <string name="hero_2">Shaman</string>
+    <string name="hero_3">Rogue</string>
+    <string name="hero_4">Paladin</string>
+    <string name="hero_5">Hunter</string>
+    <string name="hero_6">Druid</string>
+    <string name="hero_7">Warlock</string>
+    <string name="hero_8">Mage</string>
+    <string name="hero_9">Priest</string>
+
+
+</resources>
