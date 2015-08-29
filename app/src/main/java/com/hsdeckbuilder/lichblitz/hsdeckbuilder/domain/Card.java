@@ -5,7 +5,7 @@ package com.hsdeckbuilder.lichblitz.hsdeckbuilder.domain;
  *
  * Any card of HS.
  */
-public class Card {
+public class Card implements  Comparable<Card>{
 
     private String cardId;
     private String name;
@@ -24,6 +24,7 @@ public class Card {
     private String img;
     private String imgGold;
     private String locale;
+    private String playerClass;
 
 
     public String getCardId() {
@@ -92,5 +93,18 @@ public class Card {
 
     public String getLocale() {
         return locale;
+    }
+
+    public String getPlayerClass() {
+        return playerClass;
+    }
+
+    @Override
+    public int compareTo(Card card) {
+        int coin = 0;
+        if(card.getCost() < this.getCost()) coin = -1;
+        else if(card.getCost() > this.getCost()) coin = 1;
+
+        return coin;
     }
 }

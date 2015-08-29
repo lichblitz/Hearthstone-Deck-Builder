@@ -19,7 +19,7 @@
         >
 
         <ImageView
-            android:id="@+id/class_portrait"
+            android:id="@+id/hero_portrait"
             android:layout_width="160dp"
             android:layout_height="128dp"
             android:layout_marginRight="30dp"
@@ -40,7 +40,7 @@
             android:layout_marginLeft="40dp"/>
 
         <ImageView
-            android:id="@+id/class_spell"
+            android:id="@+id/hero_spell"
             android:layout_width="92dp"
             android:layout_height="100dp"
             android:layout_margin="4dp"

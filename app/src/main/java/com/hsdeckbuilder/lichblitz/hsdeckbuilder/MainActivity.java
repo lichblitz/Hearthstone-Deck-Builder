@@ -3,6 +3,7 @@ package com.hsdeckbuilder.lichblitz.hsdeckbuilder;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.hsdeckbuilder.lichblitz.hsdeckbuilder.ui.fragment.SelectCardFragment;
 import com.hsdeckbuilder.lichblitz.hsdeckbuilder.ui.fragment.SelectHeroFragment;
 
 public class MainActivity extends AppCompatActivity {
@@ -16,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
         if(savedInstanceState == null) {
 
             getSupportFragmentManager().beginTransaction()
-                    .add(R.id.main_container, new SelectHeroFragment())
+                    .add(R.id.main_container, new SelectCardFragment())
                     .commit();
         }
     }

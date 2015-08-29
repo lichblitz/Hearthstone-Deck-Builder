@@ -1,6 +1,7 @@
 package com.hsdeckbuilder.lichblitz.hsdeckbuilder.io;
 
 import com.hsdeckbuilder.lichblitz.hsdeckbuilder.domain.Card;
+import com.hsdeckbuilder.lichblitz.hsdeckbuilder.io.model.AllCardResponse;
 
 import java.util.List;
 
@@ -16,12 +17,10 @@ import retrofit.http.Path;
 public interface HearthstoneApiService {
 
     @Headers({
-            "X-Mashape-Key", ApiConstants.MASHAPE_KEY,
-            "Accept", "application/json"
+            "X-Mashape-Key: "+ ApiConstants.MASHAPE_KEY
     })
-
     @GET(ApiConstants.URL_ALL_CARDS)
-    List<Card> getAllCards();
+    void getAllCards(Callback<AllCardResponse> callback);
 
     @Headers({
             "X-Mashape-Key: "+ ApiConstants.MASHAPE_KEY,

@@ -37,9 +37,9 @@ public class SelectHeroFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View root = inflater.inflate(R.layout.fragment_select_class, container,false);
+        View root = inflater.inflate(R.layout.fragment_select_hero, container,false);
 
-        mClassList = (RecyclerView) root.findViewById(R.id.class_list);
+        mClassList = (RecyclerView) root.findViewById(R.id.hero_list);
 
         setupClassList();
     
