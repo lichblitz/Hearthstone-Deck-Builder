@@ -14,6 +14,8 @@ import java.util.Collections;
  */
 public class AllCardResponse {
 
+    ArrayList<Card> allCards = new ArrayList<>();
+
     @SerializedName(JsonKeys.SET_BASIC)
     ArrayList<Card> basicCards;
 
@@ -32,8 +34,9 @@ public class AllCardResponse {
     @SerializedName(JsonKeys.SET_TGT)
     ArrayList<Card> tgtCards;
 
-    public ArrayList<Card> getAllCards(){
-        ArrayList<Card> allCards = new ArrayList<>();
+    public ArrayList<Card> getAllCards(String heroClass){
+
+        allCards = new ArrayList<>();
 
         allCards.addAll(basicCards);
         allCards.addAll(classicCards);
@@ -44,29 +47,25 @@ public class AllCardResponse {
 
 
         //removing hero cards and card from other heroes
-        checkHeroCard(basicCards, "warrior");
-        checkHeroCard(classicCards, "warrior");
-        checkHeroCard(blackrockCards, "warrior");
-        checkHeroCard(goblinsGnomesCards, "warrior");
-        checkHeroCard(naxxCards, "warrior");
-        checkHeroCard(tgtCards, "warrior");
-
-
-
-
-
+        checkHeroCard(basicCards, heroClass);
+        checkHeroCard(classicCards, heroClass);
+        checkHeroCard(blackrockCards, heroClass);
+        checkHeroCard(goblinsGnomesCards, heroClass);
+        checkHeroCard(naxxCards, heroClass);
+        checkHeroCard(tgtCards, heroClass);
 
         return allCards;
     }
 
     private void checkHeroCard(ArrayList<Card> cards, String heroClass) {
+
         for(Card card : cards){
-            if(card.getCardId().contains("HERO")){
-                getAllCards().remove(card);
+            if(card.getCardId().contains(CardConstants.HERO_CARD)){
+                allCards.remove(card);
             }
             if(card.getPlayerClass() != null){
                 if(!card.getPlayerClass().contains(heroClass))
-                    getAllCards().remove(card);
+                    allCards.remove(card);
             }
 
         }

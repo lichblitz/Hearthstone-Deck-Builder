@@ -15,6 +15,9 @@ public class CardConstants {
     public static final String MAGE = "HERO_08";
     public static final String PRIEST = "HERO_09";
 
+    public static final String HERO_CARD = "HERO";
+    public static final String BUNDLE_KEY_HEROCLASS = "heroClass";
+
 
 
 

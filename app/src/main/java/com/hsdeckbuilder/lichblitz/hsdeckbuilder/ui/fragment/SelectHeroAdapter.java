@@ -1,6 +1,8 @@
 package com.hsdeckbuilder.lichblitz.hsdeckbuilder.ui.fragment;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.IntegerRes;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -14,7 +16,9 @@ import android.widget.TextView;
 import com.hsdeckbuilder.lichblitz.hsdeckbuilder.R;
 import com.hsdeckbuilder.lichblitz.hsdeckbuilder.domain.Card;
 import com.hsdeckbuilder.lichblitz.hsdeckbuilder.domain.Hero;
+import com.hsdeckbuilder.lichblitz.hsdeckbuilder.io.CardConstants;
 import com.hsdeckbuilder.lichblitz.hsdeckbuilder.io.HearthstoneApiAdapter;
+import com.hsdeckbuilder.lichblitz.hsdeckbuilder.ui.activity.SelectCardActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -84,6 +88,18 @@ public class SelectHeroAdapter extends  RecyclerView.Adapter<SelectHeroAdapter.H
         public HeroViewHolder(View itemView) {
             super(itemView);
 
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Log.d("HERO", heroClass.getText().toString());
+                    Bundle bundle = new Bundle();
+                    bundle.putString(CardConstants.BUNDLE_KEY_HEROCLASS, heroClass.getText().toString());
+
+                    Intent intent = new Intent(context, SelectCardActivity.class);
+                    intent.putExtras(bundle);
+                    context.startActivity(intent);
+                }
+            });
             classSpell = (ImageView) itemView.findViewById(R.id.hero_spell);
             classPortrait = (ImageView) itemView.findViewById(R.id.hero_portrait);
             heroClass = (TextView) itemView.findViewById(R.id.txt_hero_name);

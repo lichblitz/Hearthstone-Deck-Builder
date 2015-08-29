@@ -10,6 +10,7 @@ import android.widget.ImageView;
 
 import com.hsdeckbuilder.lichblitz.hsdeckbuilder.R;
 import com.hsdeckbuilder.lichblitz.hsdeckbuilder.domain.Card;
+import com.hsdeckbuilder.lichblitz.hsdeckbuilder.io.CardConstants;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -29,10 +30,16 @@ public class SelectCardAdapter extends RecyclerView.Adapter<SelectCardAdapter.Se
         if(cards == null)
             throw new NullPointerException("Cards must be an array not null");
 
-       this.cards.addAll(cards);
+
+        //removing hero cards and card from other heroes
+
+
+        this.cards.addAll(cards);
         notifyItemRangeInserted(getItemCount() - 1, cards.size());
 
     }
+
+
     @Override
     public int getItemCount() {
         return cards.size();
@@ -75,4 +82,6 @@ public class SelectCardAdapter extends RecyclerView.Adapter<SelectCardAdapter.Se
 
         }
     }
+
+
 }

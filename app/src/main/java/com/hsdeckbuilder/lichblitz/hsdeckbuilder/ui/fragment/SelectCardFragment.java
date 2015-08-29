@@ -10,10 +10,14 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.hsdeckbuilder.lichblitz.hsdeckbuilder.R;
+import com.hsdeckbuilder.lichblitz.hsdeckbuilder.domain.Card;
+import com.hsdeckbuilder.lichblitz.hsdeckbuilder.io.CardConstants;
 import com.hsdeckbuilder.lichblitz.hsdeckbuilder.io.HearthstoneApiAdapter;
 import com.hsdeckbuilder.lichblitz.hsdeckbuilder.io.model.AllCardResponse;
 import com.hsdeckbuilder.lichblitz.hsdeckbuilder.ui.ItemOffsetDecoration;
 
+
+import java.util.List;
 
 import retrofit.Callback;
 import retrofit.RetrofitError;
@@ -26,6 +30,7 @@ public class SelectCardFragment extends Fragment implements Callback<AllCardResp
 
     private static final int COL_NUM = 4;
     private RecyclerView mCardList;
+    private String mHeroClass;
 
     private SelectCardAdapter mAdapter;
 
@@ -33,6 +38,8 @@ public class SelectCardFragment extends Fragment implements Callback<AllCardResp
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+
+        mHeroClass = getArguments().getString(CardConstants.BUNDLE_KEY_HEROCLASS);
         mAdapter = new SelectCardAdapter(getActivity());
     }
 
@@ -65,11 +72,12 @@ public class SelectCardFragment extends Fragment implements Callback<AllCardResp
 
     @Override
     public void success(AllCardResponse allCardResponse, Response response) {
-        mAdapter.addAll(allCardResponse.getAllCards());
+        mAdapter.addAll(allCardResponse.getAllCards(mHeroClass));
     }
 
     @Override
     public void failure(RetrofitError error) {
         error.printStackTrace();
     }
+
 }
