@@ -1,13 +1,10 @@
 package com.hsdeckbuilder.lichblitz.hsdeckbuilder.io.model;
 
-import android.util.Log;
-
 import com.google.gson.annotations.SerializedName;
 import com.hsdeckbuilder.lichblitz.hsdeckbuilder.domain.Card;
-import com.hsdeckbuilder.lichblitz.hsdeckbuilder.io.CardConstants;
+import com.hsdeckbuilder.lichblitz.hsdeckbuilder.io.AppConstants;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 /**
  * Created by lichblitz on 28/08/15.
@@ -60,7 +57,7 @@ public class AllCardResponse {
     private void checkHeroCard(ArrayList<Card> cards, String heroClass) {
 
         for(Card card : cards){
-            if(card.getCardId().contains(CardConstants.HERO_CARD)){
+            if(card.getCardId().contains(AppConstants.HERO_CARD)){
                 allCards.remove(card);
             }
             if(card.getPlayerClass() != null){

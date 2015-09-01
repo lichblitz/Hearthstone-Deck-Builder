@@ -10,14 +10,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.hsdeckbuilder.lichblitz.hsdeckbuilder.R;
-import com.hsdeckbuilder.lichblitz.hsdeckbuilder.domain.Card;
-import com.hsdeckbuilder.lichblitz.hsdeckbuilder.io.CardConstants;
+import com.hsdeckbuilder.lichblitz.hsdeckbuilder.io.AppConstants;
 import com.hsdeckbuilder.lichblitz.hsdeckbuilder.io.HearthstoneApiAdapter;
 import com.hsdeckbuilder.lichblitz.hsdeckbuilder.io.model.AllCardResponse;
 import com.hsdeckbuilder.lichblitz.hsdeckbuilder.ui.ItemOffsetDecoration;
+import com.hsdeckbuilder.lichblitz.hsdeckbuilder.ui.adapter.SelectCardAdapter;
 
-
-import java.util.List;
 
 import retrofit.Callback;
 import retrofit.RetrofitError;
@@ -39,7 +37,7 @@ public class SelectCardFragment extends Fragment implements Callback<AllCardResp
         super.onCreate(savedInstanceState);
 
 
-        mHeroClass = getArguments().getString(CardConstants.BUNDLE_KEY_HEROCLASS);
+        mHeroClass = getArguments().getString(AppConstants.BUNDLE_KEY_HEROCLASS);
         mAdapter = new SelectCardAdapter(getActivity());
     }
 

@@ -21,7 +21,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ui.activity.SelectCardActivity"
+        <activity android:name=".ui.activity.DeckBuilderActivity"
             android:parentActivityName=".MainActivity"
             android:label="@string/app_name"
             ></activity>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="-20dp">
+
+
+        <ImageView
+            android:id="@+id/mana_icon"
+            android:src="@drawable/icon_mana"
+            android:layout_width="40dp"
+            android:layout_height="39dp" />
+
+        <TextView
+
+            style="@style/CardPreviewText"
+
+            android:paddingTop="6dp"
+            android:paddingLeft="15dp"
+            android:textColor="@color/color_default"
+            android:id="@+id/mana_cost"
+            android:layout_width="40dp"
+            android:layout_height="39dp" />
+
+
+    </FrameLayout>
+
+    <android.support.v7.widget.CardView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        app:cardBackgroundColor="@color/secondary_text"
+        app:cardCornerRadius="10dp">
+
+        <TextView
+
+            android:textStyle="bold"
+            android:layout_marginLeft="30dp"
+            android:textColor="@color/epic"
+            android:layout_gravity="center|left"
+            android:id="@+id/card_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/CardPreviewText"
+            />
+
+
+        <LinearLayout
+            android:layout_gravity="right"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+
+            <ImageView
+
+                android:layout_gravity="right"
+                android:id="@+id/card_preview"
+                android:scaleType="center"
+                android:layout_width="200dp"
+                android:layout_height="match_parent"
+                android:alpha="80" />
+
+
+            <TextView
+                android:layout_gravity="right|center"
+                android:id="@+id/card_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/card_count"
+                android:gravity="center"
+                style="@style/CardPreviewText"
+                android:text=""/>
+
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>

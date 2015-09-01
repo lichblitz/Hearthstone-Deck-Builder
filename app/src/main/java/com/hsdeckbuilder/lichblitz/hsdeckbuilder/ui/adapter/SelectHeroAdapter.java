@@ -1,4 +1,4 @@
-package com.hsdeckbuilder.lichblitz.hsdeckbuilder.ui.fragment;
+package com.hsdeckbuilder.lichblitz.hsdeckbuilder.ui.adapter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -14,19 +14,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.hsdeckbuilder.lichblitz.hsdeckbuilder.R;
-import com.hsdeckbuilder.lichblitz.hsdeckbuilder.domain.Card;
 import com.hsdeckbuilder.lichblitz.hsdeckbuilder.domain.Hero;
-import com.hsdeckbuilder.lichblitz.hsdeckbuilder.io.CardConstants;
-import com.hsdeckbuilder.lichblitz.hsdeckbuilder.io.HearthstoneApiAdapter;
-import com.hsdeckbuilder.lichblitz.hsdeckbuilder.ui.activity.SelectCardActivity;
+import com.hsdeckbuilder.lichblitz.hsdeckbuilder.io.AppConstants;
+import com.hsdeckbuilder.lichblitz.hsdeckbuilder.ui.activity.DeckBuilderActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
-import java.util.List;
-
-import retrofit.Callback;
-import retrofit.RetrofitError;
-import retrofit.client.Response;
 
 /**
  * Created by lichblitz on 20/08/15.
@@ -72,7 +65,7 @@ public class SelectHeroAdapter extends  RecyclerView.Adapter<SelectHeroAdapter.H
     public void onBindViewHolder(HeroViewHolder holder, int position) {
         Hero currentHero = classes.get(position);
         holder.setHeroPortrait(currentHero.getHeroPortrait());
-        holder.setHeroPower(currentHero.getPowerImage());
+        //holder.setHeroPower(currentHero.getPowerImage());
         holder.setHeroClass(currentHero.getHeroClass());
         holder.setHeroId(currentHero.getHeroId());
 
@@ -93,14 +86,14 @@ public class SelectHeroAdapter extends  RecyclerView.Adapter<SelectHeroAdapter.H
                 public void onClick(View v) {
                     Log.d("HERO", heroClass.getText().toString());
                     Bundle bundle = new Bundle();
-                    bundle.putString(CardConstants.BUNDLE_KEY_HEROCLASS, heroClass.getText().toString());
+                    bundle.putString(AppConstants.BUNDLE_KEY_HEROCLASS, heroClass.getText().toString());
 
-                    Intent intent = new Intent(context, SelectCardActivity.class);
+                    Intent intent = new Intent(context, DeckBuilderActivity.class);
                     intent.putExtras(bundle);
                     context.startActivity(intent);
                 }
             });
-            classSpell = (ImageView) itemView.findViewById(R.id.hero_spell);
+            //classSpell = (ImageView) itemView.findViewById(R.id.hero_spell);
             classPortrait = (ImageView) itemView.findViewById(R.id.hero_portrait);
             heroClass = (TextView) itemView.findViewById(R.id.txt_hero_name);
 

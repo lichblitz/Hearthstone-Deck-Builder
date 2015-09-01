@@ -13,6 +13,9 @@
     <string name="hero_7">Warlock</string>
     <string name="hero_8">Mage</string>
     <string name="hero_9">Priest</string>
+    <string name="error_legendary">Your deck can\'t contain more that 1 of each legendary card.</string>
+    <string name="TAB_DECK">My deck</string>
+    <string name="TAB_SELECT_CARDS">Select cards</string>
 
 
 </resources>

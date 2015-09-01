@@ -1,4 +1,4 @@
-package com.hsdeckbuilder.lichblitz.hsdeckbuilder.ui.fragment;
+package com.hsdeckbuilder.lichblitz.hsdeckbuilder.ui.adapter;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -10,7 +10,6 @@ import android.widget.ImageView;
 
 import com.hsdeckbuilder.lichblitz.hsdeckbuilder.R;
 import com.hsdeckbuilder.lichblitz.hsdeckbuilder.domain.Card;
-import com.hsdeckbuilder.lichblitz.hsdeckbuilder.io.CardConstants;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -57,6 +56,7 @@ public class SelectCardAdapter extends RecyclerView.Adapter<SelectCardAdapter.Se
         Card currentCard = cards.get(position);
 
         holder.setCardImage(currentCard.getImg());
+
 
     }
 
