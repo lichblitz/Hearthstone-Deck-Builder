@@ -3,7 +3,7 @@ package com.hsdeckbuilder.lichblitz.hsdeckbuilder.io;
 /**
  * Created by lichblitz on 20/08/15.
  */
-public class ApiConstants {
+public final class ApiConstants {
 
     public static final String MASHAPE_KEY = "18340TpSWtmshXZePn5R6HDMXZgdp1CDdONjsnKtZLs22b1pwS";
     public static final String BASE_URL = "https://omgvamp-hearthstone-v1.p.mashape.com";

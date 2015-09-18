@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.INTERNET"></uses-permission>
     <application
+        android:name=".app.BuilderApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -25,6 +26,8 @@
             android:parentActivityName=".MainActivity"
             android:label="@string/app_name"
             ></activity>
+
+
     </application>
 
 </manifest>

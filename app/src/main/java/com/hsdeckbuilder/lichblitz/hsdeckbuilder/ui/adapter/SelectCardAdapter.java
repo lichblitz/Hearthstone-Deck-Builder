@@ -6,11 +6,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 
 import com.hsdeckbuilder.lichblitz.hsdeckbuilder.R;
 import com.hsdeckbuilder.lichblitz.hsdeckbuilder.domain.Card;
-import com.squareup.picasso.Picasso;
+import com.hsdeckbuilder.lichblitz.hsdeckbuilder.ui.adapter.holder.SelectCardViewHolder;
+import com.hsdeckbuilder.lichblitz.hsdeckbuilder.ui.listener.SelectCardListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,8 +19,9 @@ import java.util.List;
  * Created by lichblitz on 26/08/15.
  * Adapter for SelectCardFragment
  */
-public class SelectCardAdapter extends RecyclerView.Adapter<SelectCardAdapter.SelectCardPlaceHolder> {
+public class SelectCardAdapter extends RecyclerView.Adapter<SelectCardViewHolder> {
 
+    SelectCardListener mCardListener;
     ArrayList<Card> cards;
     Context context;
 
@@ -29,11 +30,8 @@ public class SelectCardAdapter extends RecyclerView.Adapter<SelectCardAdapter.Se
         if(cards == null)
             throw new NullPointerException("Cards must be an array not null");
 
-
-        //removing hero cards and card from other heroes
-
-
         this.cards.addAll(cards);
+
         notifyItemRangeInserted(getItemCount() - 1, cards.size());
 
     }
@@ -45,43 +43,27 @@ public class SelectCardAdapter extends RecyclerView.Adapter<SelectCardAdapter.Se
     }
 
     @Override
-    public SelectCardPlaceHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public SelectCardViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(context).inflate(R.layout.item_select_card, parent, false);
-
-        return new SelectCardPlaceHolder(itemView);
+        return new SelectCardViewHolder(itemView, mCardListener);
     }
 
     @Override
-    public void onBindViewHolder(SelectCardPlaceHolder holder, int position) {
+    public void onBindViewHolder(SelectCardViewHolder holder, int position) {
         Card currentCard = cards.get(position);
 
         holder.setCardImage(currentCard.getImg());
+        holder.setCurrentCard(currentCard);
 
 
     }
 
-    public SelectCardAdapter(Context context){
+    public SelectCardAdapter(Context context, SelectCardListener cardListener){
         this.context = context;
         this.cards = new ArrayList<>();
+        this.mCardListener = cardListener;
     }
 
-
-    public class SelectCardPlaceHolder extends RecyclerView.ViewHolder{
-        ImageView cardImage;
-
-        public SelectCardPlaceHolder(View itemView){
-            super(itemView);
-            cardImage = (ImageView) itemView.findViewById(R.id.card_image);
-        }
-
-        public void setCardImage(String url){
-            Picasso.with(context)
-                    .load(url)
-                    .placeholder(R.drawable.card)
-                    .into(cardImage);
-
-        }
-    }
 
 
 }

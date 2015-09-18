@@ -1,5 +1,7 @@
 package com.hsdeckbuilder.lichblitz.hsdeckbuilder.domain;
 
+import android.util.Log;
+
 import com.hsdeckbuilder.lichblitz.hsdeckbuilder.io.AppConstants;
 
 import java.util.ArrayList;
@@ -20,6 +22,11 @@ public class Deck {
         this.cardCounter = new HashMap<>();
     }
 
+    /**
+     * Adds a card to the deck
+     * @param card
+     * @return
+     */
     public int addCard(Card card){
 
 
@@ -45,8 +52,9 @@ public class Deck {
                     return AppConstants.ADD_CARD_ERROR_CARD_LIMIT;
 
                 }else{
-                    cards.add(card);
-                    cardCounter.put(cardId, cardCount++);
+
+                    cardCounter.put(cardId, cardCount+1);
+
                     return AppConstants.ADD_CARD_SUCCESS;
                 }
             }
@@ -66,7 +74,7 @@ public class Deck {
         return cards;
     }
 
-    public HashMap<String,Integer> getcardCounter() {
+    public HashMap<String,Integer> getCardCounter() {
         return cardCounter;
     }
 }

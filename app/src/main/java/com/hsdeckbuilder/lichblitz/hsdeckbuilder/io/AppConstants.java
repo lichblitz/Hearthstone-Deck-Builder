@@ -1,11 +1,14 @@
 package com.hsdeckbuilder.lichblitz.hsdeckbuilder.io;
 
 import com.hsdeckbuilder.lichblitz.hsdeckbuilder.R;
+import com.hsdeckbuilder.lichblitz.hsdeckbuilder.app.BuilderApp;
 
 /**
  * Created by lichblitz on 24/08/15.
  */
-public class AppConstants {
+public final class AppConstants {
+
+    public static final String APP_NAME = BuilderApp.getStringFromId(R.string.app_name);
 
     public static final String WARRIOR = "HERO_01";
     public static final String SHAMAN = "HERO_02";
@@ -19,6 +22,7 @@ public class AppConstants {
 
     public static final String HERO_CARD = "HERO";
     public static final String BUNDLE_KEY_HEROCLASS = "heroClass";
+    public static final String BUNDLE_DECK_CALLBACK = "deckCallbak";
 
     public static final String RARITY_FREE = "Free";
     public static final String RARITY_COMMON = "Common";
@@ -32,4 +36,5 @@ public class AppConstants {
 
 
     public static final int ADD_CARD_SUCCESS = 0;
+
 }

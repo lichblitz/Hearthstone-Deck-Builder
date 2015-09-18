@@ -5,6 +5,7 @@ import com.hsdeckbuilder.lichblitz.hsdeckbuilder.domain.Card;
 import com.hsdeckbuilder.lichblitz.hsdeckbuilder.io.AppConstants;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * Created by lichblitz on 28/08/15.
@@ -50,6 +51,7 @@ public class AllCardResponse {
         checkHeroCard(goblinsGnomesCards, heroClass);
         checkHeroCard(naxxCards, heroClass);
         checkHeroCard(tgtCards, heroClass);
+        Collections.sort(allCards);
 
         return allCards;
     }

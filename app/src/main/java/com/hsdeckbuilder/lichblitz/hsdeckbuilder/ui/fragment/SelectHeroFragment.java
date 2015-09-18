@@ -24,6 +24,7 @@ import java.util.ArrayList;
  */
 public class SelectHeroFragment extends Fragment {
 
+    public static final String FRAGMENT_POSITION = "hero_fragment";
 
     private RecyclerView mClassList;
     private SelectHeroAdapter mAdapter;

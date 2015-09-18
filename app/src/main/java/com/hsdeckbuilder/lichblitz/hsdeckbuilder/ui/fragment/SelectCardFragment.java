@@ -1,8 +1,10 @@
 package com.hsdeckbuilder.lichblitz.hsdeckbuilder.ui.fragment;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -15,6 +17,8 @@ import com.hsdeckbuilder.lichblitz.hsdeckbuilder.io.HearthstoneApiAdapter;
 import com.hsdeckbuilder.lichblitz.hsdeckbuilder.io.model.AllCardResponse;
 import com.hsdeckbuilder.lichblitz.hsdeckbuilder.ui.ItemOffsetDecoration;
 import com.hsdeckbuilder.lichblitz.hsdeckbuilder.ui.adapter.SelectCardAdapter;
+import com.hsdeckbuilder.lichblitz.hsdeckbuilder.ui.listener.DeckBuilderListener;
+import com.hsdeckbuilder.lichblitz.hsdeckbuilder.ui.listener.SelectCardListener;
 
 
 import retrofit.Callback;
@@ -31,6 +35,8 @@ public class SelectCardFragment extends Fragment implements Callback<AllCardResp
     private String mHeroClass;
 
     private SelectCardAdapter mAdapter;
+    private SelectCardListener cardListener;
+    private DeckBuilderListener deckListener;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -38,7 +44,8 @@ public class SelectCardFragment extends Fragment implements Callback<AllCardResp
 
 
         mHeroClass = getArguments().getString(AppConstants.BUNDLE_KEY_HEROCLASS);
-        mAdapter = new SelectCardAdapter(getActivity());
+
+        mAdapter = new SelectCardAdapter(getActivity(), cardListener);
     }
 
     @Override
@@ -77,5 +84,17 @@ public class SelectCardFragment extends Fragment implements Callback<AllCardResp
     public void failure(RetrofitError error) {
         error.printStackTrace();
     }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        this.deckListener = (DeckBuilderListener)activity;
+    }
+
+    public void setCardListener(SelectCardListener cardListener){
+
+        this.cardListener = cardListener;
+    }
+
 
 }

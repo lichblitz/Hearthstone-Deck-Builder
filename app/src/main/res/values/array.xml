@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <array name="drawer_titles">
+
+        <item name="default">@string/default_page</item>
+        <item name="new_deck">@string/new_deck_page</item>
+    </array>
+
+</resources>

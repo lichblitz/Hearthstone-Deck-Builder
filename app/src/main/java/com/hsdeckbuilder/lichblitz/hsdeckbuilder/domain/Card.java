@@ -102,8 +102,8 @@ public class Card implements  Comparable<Card>{
     @Override
     public int compareTo(Card card) {
         int coin = 0;
-        if(card.getCost() < this.getCost()) coin = -1;
-        else if(card.getCost() > this.getCost()) coin = 1;
+        if(card.getCost() < this.getCost()) coin = 1;
+        else if(card.getCost() > this.getCost()) coin = -1;
 
         return coin;
     }
