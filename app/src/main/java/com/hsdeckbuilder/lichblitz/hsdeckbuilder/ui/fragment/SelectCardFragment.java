@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -17,7 +16,6 @@ import com.hsdeckbuilder.lichblitz.hsdeckbuilder.io.HearthstoneApiAdapter;
 import com.hsdeckbuilder.lichblitz.hsdeckbuilder.io.model.AllCardResponse;
 import com.hsdeckbuilder.lichblitz.hsdeckbuilder.ui.ItemOffsetDecoration;
 import com.hsdeckbuilder.lichblitz.hsdeckbuilder.ui.adapter.SelectCardAdapter;
-import com.hsdeckbuilder.lichblitz.hsdeckbuilder.ui.listener.DeckBuilderListener;
 import com.hsdeckbuilder.lichblitz.hsdeckbuilder.ui.listener.SelectCardListener;
 
 
@@ -36,7 +34,6 @@ public class SelectCardFragment extends Fragment implements Callback<AllCardResp
 
     private SelectCardAdapter mAdapter;
     private SelectCardListener cardListener;
-    private DeckBuilderListener deckListener;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -88,8 +85,8 @@ public class SelectCardFragment extends Fragment implements Callback<AllCardResp
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-        this.deckListener = (DeckBuilderListener)activity;
     }
+
 
     public void setCardListener(SelectCardListener cardListener){
 
@@ -97,4 +94,7 @@ public class SelectCardFragment extends Fragment implements Callback<AllCardResp
     }
 
 
+    public SelectCardAdapter getmAdapter() {
+        return mAdapter;
+    }
 }

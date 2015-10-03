@@ -15,5 +15,7 @@
     <color name="rare">#0070DD</color>
     <color name="epic">#A335EE</color>
     <color name="legendary">#FF8000</color>
+    <color name="shape_background">#6b6b6b</color>
+    <color name="shape_border">#b4b4b4</color>
 
 </resources>

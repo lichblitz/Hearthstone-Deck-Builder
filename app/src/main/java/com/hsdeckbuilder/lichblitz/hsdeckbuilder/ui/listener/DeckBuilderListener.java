@@ -1,5 +1,6 @@
 package com.hsdeckbuilder.lichblitz.hsdeckbuilder.ui.listener;
 
+import com.hsdeckbuilder.lichblitz.hsdeckbuilder.domain.Card;
 import com.hsdeckbuilder.lichblitz.hsdeckbuilder.domain.Deck;
 
 /**
@@ -7,7 +8,11 @@ import com.hsdeckbuilder.lichblitz.hsdeckbuilder.domain.Deck;
  */
 public interface DeckBuilderListener {
 
-    abstract Deck getDeck();
+    Deck getDeck();
 
-    abstract int getTotalCards();
+    int removeCardFromDeck(Card card);
+
+    int getTotalCards();
+
+    void notifyCardAdapter();
 }

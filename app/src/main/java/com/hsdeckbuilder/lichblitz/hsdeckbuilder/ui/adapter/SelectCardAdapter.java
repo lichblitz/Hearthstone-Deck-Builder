@@ -52,7 +52,7 @@ public class SelectCardAdapter extends RecyclerView.Adapter<SelectCardViewHolder
     public void onBindViewHolder(SelectCardViewHolder holder, int position) {
         Card currentCard = cards.get(position);
 
-        holder.setCardImage(currentCard.getImg());
+        holder.setCardView(currentCard.getImg());
         holder.setCurrentCard(currentCard);
 
 

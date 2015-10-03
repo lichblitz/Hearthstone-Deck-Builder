@@ -1,86 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<android.support.v7.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardElevation="0dp"
+    android:layout_marginTop="-5dp"
+    android:layout_marginBottom="0dp"
+    app:cardPreventCornerOverlap="false"
+    app:cardBackgroundColor="@color/window_background"
     >
 
+
     <FrameLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="-20dp">
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="11dp"
+        android:layout_marginRight="6dp"
+        android:paddingLeft="30dp"
+        android:background="@drawable/border_shape">
+
 
 
         <ImageView
-            android:id="@+id/mana_icon"
-            android:src="@drawable/icon_mana"
-            android:layout_width="40dp"
-            android:layout_height="39dp" />
+            android:paddingTop="160dp"
+            android:layout_marginTop="2dp"
+            android:background="@color/shape_background"
+            android:src="@drawable/card"
+            android:alpha="0.5"
+            android:id="@+id/card_preview"
+            android:scaleType="centerCrop"
+            android:layout_width="300dp"
+            android:layout_height="27dp"
+            android:paddingRight="-150dp"
+            android:paddingLeft="77dp"
+            android:layout_marginLeft="-300dp"
+            android:layout_gravity="right"
+            android:layout_marginRight="2dp"/>
+
+        
+        <View
+            android:layout_marginTop="2dp"
+            android:background="@drawable/image_gradient"
+            android:layout_width="200dp"
+            android:layout_height="27dp"
+            android:layout_gravity="right"
+            android:layout_marginRight="2dp"></View>
 
         <TextView
+            android:text="Capeciya torja"
+            android:id="@+id/card_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            />
 
+        <TextView
+            android:layout_gravity="right|center"
+            android:id="@+id/card_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/card_count"
+            android:gravity="center"
             style="@style/CardPreviewText"
+            android:text=""/>
 
-            android:paddingTop="6dp"
-            android:paddingLeft="15dp"
-            android:textColor="@color/color_default"
-            android:id="@+id/mana_cost"
-            android:layout_width="40dp"
-            android:layout_height="39dp" />
 
 
     </FrameLayout>
 
-    <android.support.v7.widget.CardView
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        app:cardBackgroundColor="@color/secondary_text"
-        app:cardCornerRadius="10dp">
-
-        <TextView
-
-            android:textStyle="bold"
-            android:layout_marginLeft="30dp"
-            android:textColor="@color/epic"
-            android:layout_gravity="center|left"
-            android:id="@+id/card_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            style="@style/CardPreviewText"
-            />
+    <ImageView
+        android:id="@+id/mana_icon"
+        android:layout_width="40dp"
+        android:layout_height="39dp"
+        android:src="@drawable/icon_mana"/>
 
 
-        <LinearLayout
-            android:layout_gravity="right"
-            android:orientation="horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent">
+    <TextView
+        android:shadowColor="@color/window_background"
+        android:shadowRadius="3"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        style="@style/CardPreviewText"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="15dp"
+        android:textColor="@color/color_default"
+        android:id="@+id/mana_cost"
+        android:text="5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
-            <ImageView
-
-                android:layout_gravity="right"
-                android:id="@+id/card_preview"
-                android:scaleType="center"
-                android:layout_width="200dp"
-                android:layout_height="match_parent"
-                android:alpha="80" />
-
-
-            <TextView
-                android:layout_gravity="right|center"
-                android:id="@+id/card_count"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/card_count"
-                android:gravity="center"
-                style="@style/CardPreviewText"
-                android:text=""/>
-
-
-        </LinearLayout>
-
-    </android.support.v7.widget.CardView>
-
-</LinearLayout>
+</android.support.v7.widget.CardView>

@@ -33,8 +33,6 @@ public final class AppConstants {
 
     public static final int ADD_CARD_ERROR_CARD_LIMIT = 1;
     public static final int ADD_CARD_ERROR_LEGENDARY_LIMIT = 2;
-
-
     public static final int ADD_CARD_SUCCESS = 0;
-
+    public static final int ADD_CARD_FULL_DECK = 3;
 }

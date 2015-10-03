@@ -6,18 +6,16 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
+import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.hsdeckbuilder.lichblitz.hsdeckbuilder.R;
 import com.hsdeckbuilder.lichblitz.hsdeckbuilder.domain.Card;
 import com.hsdeckbuilder.lichblitz.hsdeckbuilder.domain.Deck;
-import com.hsdeckbuilder.lichblitz.hsdeckbuilder.io.AppConstants;
+import com.hsdeckbuilder.lichblitz.hsdeckbuilder.ui.CardTouchHelper;
 import com.hsdeckbuilder.lichblitz.hsdeckbuilder.ui.adapter.DeckAdapter;
 import com.hsdeckbuilder.lichblitz.hsdeckbuilder.ui.listener.DeckBuilderListener;
 import com.hsdeckbuilder.lichblitz.hsdeckbuilder.ui.listener.SelectCardListener;
@@ -30,7 +28,7 @@ public class DeckFragment extends Fragment implements SelectCardListener{
 
     private RecyclerView mDeckCards;
     private DeckAdapter mAdapter;
-    private DeckBuilderListener callback;
+    private DeckBuilderListener deckListener;
     private TextView mMessageText;
 
     @Override
@@ -38,7 +36,9 @@ public class DeckFragment extends Fragment implements SelectCardListener{
         super.onCreate(savedInstanceState);
 
 
-        mAdapter = new DeckAdapter(getActivity(), callback);
+        mAdapter = new DeckAdapter(getActivity(), deckListener);
+        
+
     }
 
     @Nullable
@@ -52,12 +52,17 @@ public class DeckFragment extends Fragment implements SelectCardListener{
         mMessageText =(TextView)root.findViewById(R.id.no_cards_message);
 
 
-        if(callback.getTotalCards()<1){
+        if(deckListener.getTotalCards()<1){
             mDeckCards.setVisibility(View.GONE);
             mMessageText.setVisibility(View.VISIBLE);
         }
 
         setupDeckCards();
+
+        CardTouchHelper mSimpleCallback = new CardTouchHelper(0, ItemTouchHelper.RIGHT, this);
+
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(mSimpleCallback);
+        itemTouchHelper.attachToRecyclerView(mDeckCards);
 
         return root;
     }
@@ -65,7 +70,7 @@ public class DeckFragment extends Fragment implements SelectCardListener{
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-        this.callback = (DeckBuilderListener) activity;
+        this.deckListener = (DeckBuilderListener) activity;
     }
 
     private void setupDeckCards(){
@@ -76,17 +81,29 @@ public class DeckFragment extends Fragment implements SelectCardListener{
 
 
     @Override
-    public int onSelectCardListener(Card card) {
+    public int onSelectCard(Card card) {
         int result = this.mAdapter.addCard(card);
-        if(callback.getTotalCards()>0){
+
+        if(deckListener.getTotalCards()>0){
             mDeckCards.setVisibility(View.VISIBLE);
             mMessageText.setVisibility(View.GONE);
         }
         return result;
     }
 
+    @Override
+    public void notifyDeckAdapter() {
+        mAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public Deck getDeck() {
+        return deckListener.getDeck();
+    }
+
     public void initialize(DeckBuilderListener callback){
-        this.callback = callback;
+        this.deckListener = callback;
         mAdapter = new DeckAdapter(getActivity(), callback);
     }
-}
+
+   }

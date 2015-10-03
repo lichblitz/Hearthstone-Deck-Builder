@@ -3,7 +3,6 @@ package com.hsdeckbuilder.lichblitz.hsdeckbuilder.ui.adapter;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +15,7 @@ import com.hsdeckbuilder.lichblitz.hsdeckbuilder.ui.adapter.holder.DeckViewHolde
 import com.hsdeckbuilder.lichblitz.hsdeckbuilder.ui.listener.DeckBuilderListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * Created by lichblitz on 30/08/15.
@@ -25,12 +25,12 @@ public class DeckAdapter extends RecyclerView.Adapter<DeckViewHolder>{
     Context context;
     ArrayList<Card> deckCards;
     Deck myDeck;
-    DeckBuilderListener callback;
+    DeckBuilderListener deckBuilderListener;
 
-    public DeckAdapter(Context context, DeckBuilderListener callback){
-        this.callback = callback;
+    public DeckAdapter(Context context, DeckBuilderListener deckBuilderListener){
+        this.deckBuilderListener = deckBuilderListener;
         this.context = context;
-        this.myDeck = callback.getDeck();
+        this.myDeck = deckBuilderListener.getDeck();
         this.deckCards = myDeck.getCards();
 
     }
@@ -40,10 +40,10 @@ public class DeckAdapter extends RecyclerView.Adapter<DeckViewHolder>{
      * @param card
      */
     public int addCard(Card card){
-        if(myDeck ==null) Log.d(AppConstants.APP_NAME, "My DECK IS NULL FFS");
 
         int result = myDeck.addCard(card);
         if(result == AppConstants.ADD_CARD_SUCCESS) {
+            Collections.sort(myDeck.getCards());
             notifyDataSetChanged();
         }
 
@@ -72,6 +72,7 @@ public class DeckAdapter extends RecyclerView.Adapter<DeckViewHolder>{
         holder.setRarityColor(currentCard.getRarity());
         holder.setCardId(currentCard.getCardId());
         holder.setCardSrc(currentCard.getImg());
+        holder.setCard(currentCard);
     }
 
     @Override
@@ -79,7 +80,7 @@ public class DeckAdapter extends RecyclerView.Adapter<DeckViewHolder>{
         View itemView = LayoutInflater.from(context).inflate(R.layout.item_deck_card, parent, false);
 
 
-        return new DeckViewHolder(itemView,callback);
+        return new DeckViewHolder(itemView, deckBuilderListener);
     }
 
 }

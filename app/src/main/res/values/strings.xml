@@ -18,6 +18,7 @@
     <string name="TAB_SELECT_CARDS">Select cards</string>
     <string name="no_cards">You haven\'t selected cards for this deck.</string>
     <string name="add_success">Card added to your deck.</string>
+    <string name="full_deck">Deck is full.</string>
     <string name="error_limit_card">You already have 2 cards of this.</string>
 
     <string name="default_page">My decks</string>

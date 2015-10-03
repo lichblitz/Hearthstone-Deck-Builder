@@ -27,6 +27,7 @@ public class DeckViewHolder extends RecyclerView.ViewHolder {
     Context context;
     String cardId;
     DeckBuilderListener mDeckListener;
+    Card card;
 
 
     public DeckViewHolder(View itemView, DeckBuilderListener deckBuilderListener) {
@@ -37,6 +38,7 @@ public class DeckViewHolder extends RecyclerView.ViewHolder {
         manaCost = (TextView)itemView.findViewById(R.id.mana_cost);
         count = (TextView)itemView.findViewById(R.id.card_count);
         cardName = (TextView)itemView.findViewById(R.id.card_name);
+
 
         itemView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
@@ -50,7 +52,7 @@ public class DeckViewHolder extends RecyclerView.ViewHolder {
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Toast.makeText(context, "toque", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -58,6 +60,10 @@ public class DeckViewHolder extends RecyclerView.ViewHolder {
 
     public void setCardId(String cardId){
         this.cardId = cardId;
+    }
+
+    public void setCard(Card card){
+        this.card = card;
     }
 
     public void setCardPreview(String url) {
@@ -98,6 +104,15 @@ public class DeckViewHolder extends RecyclerView.ViewHolder {
                 cardName.setTextColor(BuilderApp.getColorFromId(R.color.legendary));
         }
 
+    }
+
+
+    public Card getCard(){
+        return this.card;
+    }
+
+    public DeckBuilderListener getmDeckListener() {
+        return mDeckListener;
     }
 
 }
